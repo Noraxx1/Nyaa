@@ -14,5 +14,5 @@ function not_found --on-event fish_command_not_found
     echo "Command not found: $cmd $args"
 
     # runner:
-    python3 -/./local/share/nyaa/hooks/notfound.py $cmd
+    python3 -/./local/share/nyaa/hooks/notfound.py $cmd $args
 end

@@ -1,10 +1,9 @@
-import sys, subprocess
+import sys, subprocess, os
 
 # we import settings,and useful scripts
-from ..api import utils, models
-from .. import main
-
-
+sys.path.append(os.path.expanduser('~/.local/share/nyaa'))
+from api import models, utils
+import main
 
 # we get the similar command to the one provided as the laucnh arg. #
 similar=models.get_similar(input_word=sys.argv[1], database=utils.make_base(), similarity_type=main.find_type)
@@ -33,7 +32,7 @@ if choose != main.prompt_accept and not choose.strip().isspace() and choose:
 if len(sys.argv) < 2:
     command = similar
 else:
-    command = similar + sys.argv[2]
+    command = similar + " " + sys.argv[2]
 
 print(run_command(command))
 sys.exit()
